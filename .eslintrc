@@ -1,0 +1,15 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "env": {
+        "browser": true,
+        "jest": true
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "import/prefer-default-export": 0,
+        "react/destructuring-assignment": 0
+    }
+}

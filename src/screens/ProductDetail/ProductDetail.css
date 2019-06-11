@@ -1,3 +1,7 @@
-.price {
+.price, .order-action {
     margin-top: 1.5rem;
+}
+
+.order-action .input {
+    width: 70px;
 }

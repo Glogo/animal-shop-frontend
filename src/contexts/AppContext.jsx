@@ -34,6 +34,12 @@ class AppProvider extends React.Component {
         this.setState({ productDetail });
     }
 
+    clearProductDetail = () => {
+        this.setState({
+            productDetail: {},
+        });
+    }
+
     render() {
         const { children } = this.props;
         const { paginatedProducts, productDetail } = this.state;
@@ -43,6 +49,7 @@ class AppProvider extends React.Component {
                 value={{
                     getProducts: this.getProducts,
                     getProduct: this.getProductDetailById,
+                    clearProduct: this.clearProductDetail,
                     paginatedProducts,
                     product: productDetail,
                 }}

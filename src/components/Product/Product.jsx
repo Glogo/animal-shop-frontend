@@ -11,7 +11,9 @@ export default function Product({
             <div className="card">
                 <div className="card-image">
                     <figure className="image is-1by1">
-                        <img src={`/api/images/${thumbnail}`} alt={name} />
+                        <Link to={`/products/${id}`}>
+                            <img src={`/api/images/${thumbnail}`} alt={name} />
+                        </Link>
                     </figure>
                 </div>
                 <div className="card-content">

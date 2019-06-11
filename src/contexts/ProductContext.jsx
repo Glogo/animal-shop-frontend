@@ -4,7 +4,7 @@ import * as api from '../services/api';
 
 const { Provider, Consumer } = React.createContext();
 
-class AppProvider extends React.Component {
+class ProductProvider extends React.Component {
     state = {
         paginatedProducts: {
             items: [],
@@ -40,8 +40,6 @@ class AppProvider extends React.Component {
         });
     }
 
-    createOrder = (productId, productCount) => api.createOrder(productId, productCount)
-
     render() {
         const { children } = this.props;
         const { paginatedProducts, productDetail } = this.state;
@@ -52,7 +50,6 @@ class AppProvider extends React.Component {
                     getProducts: this.getProducts,
                     getProduct: this.getProductDetailById,
                     clearProduct: this.clearProductDetail,
-                    createOrder: this.createOrder,
                     paginatedProducts,
                     product: productDetail,
                 }}
@@ -63,8 +60,8 @@ class AppProvider extends React.Component {
     }
 }
 
-AppProvider.propTypes = {
+ProductProvider.propTypes = {
     children: PropTypes.node.isRequired,
 };
 
-export { AppProvider, Consumer as AppConsumer };
+export { ProductProvider, Consumer as ProductConsumer };

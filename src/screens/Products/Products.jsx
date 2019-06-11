@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import qs from 'query-string';
-import { AppConsumer } from '../../contexts/AppContext';
+import { ProductConsumer } from '../../contexts/ProductContext';
 import Pagination from '../../components/Pagination';
 import Product from '../../components/Product';
 
@@ -63,7 +63,7 @@ ProductsComponent.propTypes = {
 };
 
 export default props => (
-    <AppConsumer>
+    <ProductConsumer>
         {({ getProducts, paginatedProducts }) => (
             <ProductsComponent
                 {...props}
@@ -71,5 +71,5 @@ export default props => (
                 paginatedProducts={paginatedProducts}
             />
         )}
-    </AppConsumer>
+    </ProductConsumer>
 );

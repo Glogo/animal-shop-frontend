@@ -22,3 +22,7 @@ export async function createOrder(productId, productCount) {
     });
     return result.data;
 }
+
+export function getOrders() {
+    return axios.get('/api/orders');
+}

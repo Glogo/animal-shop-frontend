@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { AppConsumer } from '../../contexts/AppContext';
+import { ProductConsumer } from '../../contexts/ProductContext';
+import { OrderConsumer } from '../../contexts/OrderContext';
 import './ProductDetail.css';
 
 export class ProductDetailComponent extends React.Component {
@@ -114,24 +115,29 @@ ProductDetailComponent.defaultProps = {
 };
 
 export default props => (
-    <AppConsumer>
+    <OrderConsumer>
         {({
-            getProduct,
-            product,
-            clearProduct,
             createOrder,
         }) => (
-            <ProductDetailComponent
-                {...props}
-                getProduct={getProduct}
-                clearProduct={clearProduct}
-                createOrder={createOrder}
-                id={product.id}
-                name={product.name}
-                price={product.price}
-                description={product.description}
-                thumbnail={product.thumbnail}
-            />
+            <ProductConsumer>
+                {({
+                    getProduct,
+                    product,
+                    clearProduct,
+                }) => (
+                    <ProductDetailComponent
+                        {...props}
+                        getProduct={getProduct}
+                        clearProduct={clearProduct}
+                        createOrder={createOrder}
+                        id={product.id}
+                        name={product.name}
+                        price={product.price}
+                        description={product.description}
+                        thumbnail={product.thumbnail}
+                    />
+                )}
+            </ProductConsumer>
         )}
-    </AppConsumer>
+    </OrderConsumer>
 );

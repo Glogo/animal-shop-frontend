@@ -10,21 +10,21 @@ class AppProvider extends React.Component {
             items: [],
             itemsPerPage: 4,
             totalPages: 0,
-            page: 0,
+            page: 1,
         },
         productDetail: null,
     };
 
     getProducts = async (page = 0) => {
         const { itemsPerPage } = this.state.paginatedProducts;
-        const paginated = await api.getProducts(itemsPerPage, page);
+        const paginated = await api.getProducts(itemsPerPage, page - 1);
 
         this.setState({
             paginatedProducts: {
                 items: paginated.content,
                 itemsPerPage: paginated.size,
                 totalPages: paginated.totalPages,
-                page: paginated.number,
+                page: paginated.number + 1,
             },
         });
     }

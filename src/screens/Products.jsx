@@ -11,6 +11,13 @@ export class ProductsComponent extends React.Component {
         this.props.getProducts(query.page);
     }
 
+    componentWillReceiveProps(props) {
+        if (this.props.location.search !== props.location.search) {
+            const query = qs.parse(props.location.search);
+            props.getProducts(query.page);
+        }
+    }
+
     render() {
         const {
             items, itemsPerPage, totalPages, page,

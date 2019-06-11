@@ -29,9 +29,9 @@ export class ProductDetailComponent extends React.Component {
         }
     }
 
-    placeOrder = (e) => {
+    createOrder = (e) => {
         e.preventDefault();
-        console.log('Placing order', this.props.id, this.state.orderCount);
+        this.props.createOrder(this.props.id, this.state.orderCount);
     }
 
     render() {
@@ -61,7 +61,7 @@ export class ProductDetailComponent extends React.Component {
                         <p>{this.props.description}</p>
                         <p className="price has-text-black is-size-5">{this.props.price} €</p>
 
-                        <form className="order-action" onSubmit={this.placeOrder}>
+                        <form className="order-action" onSubmit={this.createOrder}>
                             <div className="field has-addons">
                                 <p className="control">
                                     <input
@@ -90,6 +90,7 @@ export class ProductDetailComponent extends React.Component {
 ProductDetailComponent.propTypes = {
     getProduct: PropTypes.func.isRequired,
     clearProduct: PropTypes.func.isRequired,
+    createOrder: PropTypes.func.isRequired,
     id: PropTypes.number,
     name: PropTypes.string,
     price: PropTypes.number,
@@ -110,11 +111,17 @@ ProductDetailComponent.defaultProps = {
 
 export default props => (
     <AppConsumer>
-        {({ getProduct, clearProduct, product }) => (
+        {({
+            getProduct,
+            product,
+            clearProduct,
+            createOrder,
+        }) => (
             <ProductDetailComponent
                 {...props}
                 getProduct={getProduct}
                 clearProduct={clearProduct}
+                createOrder={createOrder}
                 id={product.id}
                 name={product.name}
                 price={product.price}

@@ -40,6 +40,8 @@ class AppProvider extends React.Component {
         });
     }
 
+    createOrder = (productId, productCount) => api.createOrder(productId, productCount)
+
     render() {
         const { children } = this.props;
         const { paginatedProducts, productDetail } = this.state;
@@ -50,6 +52,7 @@ class AppProvider extends React.Component {
                     getProducts: this.getProducts,
                     getProduct: this.getProductDetailById,
                     clearProduct: this.clearProductDetail,
+                    createOrder: this.createOrder,
                     paginatedProducts,
                     product: productDetail,
                 }}

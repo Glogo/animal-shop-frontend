@@ -15,7 +15,10 @@ export async function getProductDetailById(id) {
     return result.data;
 }
 
-export async function createOrder(order) {
-    const result = await axios.post('/api/orders', order);
+export async function createOrder(productId, productCount) {
+    const result = await axios.post('/api/orders', {
+        productId,
+        productCount,
+    });
     return result.data;
 }

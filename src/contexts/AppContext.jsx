@@ -12,7 +12,7 @@ class AppProvider extends React.Component {
             totalPages: 0,
             page: 1,
         },
-        productDetail: null,
+        productDetail: {},
     };
 
     getProducts = async (page = 0) => {
@@ -29,7 +29,7 @@ class AppProvider extends React.Component {
         });
     }
 
-    getProductById = async (id) => {
+    getProductDetailById = async (id) => {
         const productDetail = await api.getProductDetailById(id);
         this.setState({ productDetail });
     }
@@ -42,8 +42,9 @@ class AppProvider extends React.Component {
             <Provider
                 value={{
                     getProducts: this.getProducts,
+                    getProduct: this.getProductDetailById,
                     paginatedProducts,
-                    productDetail,
+                    product: productDetail,
                 }}
             >
                 {children}

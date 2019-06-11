@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import qs from 'query-string';
-import { AppConsumer } from '../contexts/AppContext';
-import Pagination from '../components/Pagination';
-import Product from '../components/Product';
+import { AppConsumer } from '../../contexts/AppContext';
+import Pagination from '../../components/Pagination';
+import Product from '../../components/Product';
 
 export class ProductsComponent extends React.Component {
     componentDidMount() {
@@ -24,8 +24,8 @@ export class ProductsComponent extends React.Component {
         } = this.props.paginatedProducts;
 
         return (
-            <div>
-                <h2 className="is-size-4">Products</h2>
+            <section className="section">
+                <h2 className="title is-4">Products</h2>
 
                 <div className="columns is-multiline">
                     {items.map(product => (
@@ -44,7 +44,7 @@ export class ProductsComponent extends React.Component {
                     totalPages={totalPages}
                     page={page}
                 />
-            </div>
+            </section>
         );
     }
 }

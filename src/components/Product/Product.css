@@ -1,0 +1,15 @@
+.product.column {
+    display: flex;
+}
+
+.product .card-content {
+    margin-bottom: 3rem;
+}
+
+.product-price {
+    position: absolute;
+    text-align: right;
+    padding: 1.5rem;
+    bottom: 0;
+    right: 0;
+}

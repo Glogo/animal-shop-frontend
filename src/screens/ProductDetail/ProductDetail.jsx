@@ -29,9 +29,13 @@ export class ProductDetailComponent extends React.Component {
         }
     }
 
-    createOrder = (e) => {
+    createOrder = async (e) => {
         e.preventDefault();
-        this.props.createOrder(this.props.id, this.state.orderCount);
+        const order = await this.props.createOrder(this.props.id, this.state.orderCount);
+
+        // Instead of alert should normally use modal or https://bulma.io/documentation/components/modal/
+        // eslint-disable-next-line
+        alert(`Order ${order.id} created. Total price: ${order.totalPrice} €`);
     }
 
     render() {

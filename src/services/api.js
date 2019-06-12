@@ -23,6 +23,7 @@ export async function createOrder(productId, productCount) {
     return result.data;
 }
 
-export function getOrders() {
-    return axios.get('/api/orders');
+export async function getOrders() {
+    const result = await axios.get('/api/orders');
+    return result.data;
 }

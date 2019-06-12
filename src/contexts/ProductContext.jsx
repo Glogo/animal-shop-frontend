@@ -34,6 +34,17 @@ class ProductProvider extends React.Component {
         this.setState({ productDetail });
     }
 
+    clearProducts = () => {
+        this.setState({
+            paginatedProducts: {
+                items: [],
+                itemsPerPage: 4,
+                totalPages: 0,
+                page: 1,
+            },
+        });
+    }
+
     clearProductDetail = () => {
         this.setState({
             productDetail: {},
@@ -50,6 +61,7 @@ class ProductProvider extends React.Component {
                     getProducts: this.getProducts,
                     getProduct: this.getProductDetailById,
                     clearProduct: this.clearProductDetail,
+                    clearProducts: this.clearProducts,
                     paginatedProducts,
                     product: productDetail,
                 }}

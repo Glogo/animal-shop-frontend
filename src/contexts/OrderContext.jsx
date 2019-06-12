@@ -13,7 +13,16 @@ class OrderProvider extends React.Component {
 
     getOrders = async () => {
         const orders = await api.getOrders();
-        this.setState({ orders });
+
+        const productPromises = orders.map(order => api.getProductDetailById(order.productId));
+        const products = await Promise.all(productPromises);
+
+        const ordersWithProducts = orders.map((order, i) => ({
+            ...order,
+            product: products[i],
+        }));
+
+        this.setState({ orders: ordersWithProducts });
     }
 
     render() {

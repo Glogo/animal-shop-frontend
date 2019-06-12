@@ -18,6 +18,10 @@ export class ProductsComponent extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.clearProducts();
+    }
+
     render() {
         const {
             items, itemsPerPage, totalPages, page,
@@ -51,6 +55,7 @@ export class ProductsComponent extends React.Component {
 
 ProductsComponent.propTypes = {
     getProducts: PropTypes.func.isRequired,
+    clearProducts: PropTypes.func.isRequired,
     paginatedProducts: PropTypes.shape({
         items: PropTypes.arrayOf(PropTypes.object),
         itemsPerPage: PropTypes.number.isRequired,
@@ -64,10 +69,11 @@ ProductsComponent.propTypes = {
 
 export default props => (
     <ProductConsumer>
-        {({ getProducts, paginatedProducts }) => (
+        {({ getProducts, clearProducts, paginatedProducts }) => (
             <ProductsComponent
                 {...props}
                 getProducts={getProducts}
+                clearProducts={clearProducts}
                 paginatedProducts={paginatedProducts}
             />
         )}

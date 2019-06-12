@@ -1,5 +1,9 @@
 # animal-shop-frontend
 
+Frontend for animal shop demo app written using React.
+
+Also see [animal-shop-backend](https://github.com/Glogo/animal-shop-backend)
+
 ## Starting locally
 
 ```sh
